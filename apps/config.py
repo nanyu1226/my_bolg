@@ -41,7 +41,7 @@ class Config:
 class DevelopmentConfig(Config):
     DB_USERNAME = 'root'
     DB_PASSWORD = '123'
-    DB_HOST = '127.0.0.1'
+    DB_HOST = '47.104.139.19'
     DB_PORT = '3306'
     DB_NAME='1904project'
     DB_URI='mysql+pymysql://%s:%s@%s:%s/%s?charset=utf8'%(DB_USERNAME,DB_PASSWORD,DB_HOST,DB_PORT,DB_NAME)
