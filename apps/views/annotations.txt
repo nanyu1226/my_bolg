@@ -1,0 +1,5 @@
+Views is a python package, the function of the package is to create view_functions.
+blueprints create urls, and explode the url to web,
+
+1. __init__.py
+create a function, to register the blueprints created in the `views` file.

@@ -1,0 +1,56 @@
+{% extends 'common/base.html' %}
+{% from 'common/macro.html' import pagination_show %}
+
+{% block title %}
+    博客首页
+{% endblock %}
+{% block page_content %}
+    {{ wtf.quick_form(form) }}
+    {#  遍历帖子对象  #}
+    {% for p in posts %}
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="{{ url_for('static',filename='uploads/'+p.user.icon) }}"
+                         alt="头像" style="width: 64px;height: 64px">
+                </a>
+            </div>
+            <div class="media-body">
+                <div style="float: right;">{{ moment(p.timestamp).fromNow() }}</div>
+                <h4 class="media-heading">{{ p.user.username }}</h4>
+                {{ p.content }}
+                {% if current_user.is_authenticated %}
+                    <div class="collect" style="cursor: pointer" url="{{ url_for('posts.collect',pid=p.id) }}">
+                        {% if current_user.is_favorite(p.id) %}取消收藏{% else %}收藏{% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    {#  调用分页展示,显示页码的宏.  #}
+    {{ pagination_show(pagination,'main.index') }}
+
+{% endblock %}
+
+{# 以下是关于点击收藏时,收藏对象,ajax jquery 操作数据库 #}
+{% block scripts %}
+    {# base.html<bootstrap<jquery super()的作用是继承jquery ajax #}
+    {{ super() }}
+    <script type="text/javascript">
+        $(function () {
+            $('.collect').click(function () {
+                {# 将本作用域中的this绑定在一个变量_this上,防止其他作用域找不到 #}
+                _this = this
+                $.get($(this).attr('url'), function (data) {
+                    if ($(_this).text() == '收藏') {
+                        $(_this).text('取消收藏')
+                    } else {
+                        $(_this).text('收藏')
+                    }
+                })
+
+            })
+        })
+    </script>
+{% endblock %}

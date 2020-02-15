@@ -1,0 +1,4 @@
+1.create a package named apps
+2.shift `static,templates,views` to apps, and create two more packages named models and forms respectively.
+The static and templates are two usual files. The static file contains local resource like css, images, js and so on.
+The templates contains common,errors,macro,main and user, all of them are usual files.

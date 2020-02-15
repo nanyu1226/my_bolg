@@ -1,0 +1,11 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+博客注册页面
+{% endblock %}
+{% block content %}
+    {{ wtf.quick_form(form) }}
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+{% endblock %}

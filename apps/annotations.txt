@@ -1,0 +1,37 @@
+1.__init__.py:
+factory design mode,
+Create a function `create_app`, it can be used to create app wherever needed. Once an app is created, it would be
+forwarded to config[config_name].init_app`database environment`,config_blueprint,config_extension,config_errorhandler
+immediately.
+
+2.config.py:the purpose of this file is to configure database
+
+get the normal absolute path of current file's parent file by `base_dir = os.path.absolute(os.path.dirname(__file__))`
+
+Create parent class `Config`,
+set attr `SECRET_KEY = os.environ.get('SECRET_KEY') or 'ASFKJA123456'`,
+set attr `BOOTSTRAP-SERVER_LOCAL=True`;
+
+Create a subclass `DevelopmentConfig` from Config,
+set common attrs `DB_USERNAME,DB_PASSWORD,DB_HOST,DB_PORT,DB_NAME,DB_URI`,specifying a database,
+set attr `SQLALCHEMY_DATABASE_URI =DB_URI`.
+
+Create another subclass `TestingConfig` from Config,
+...
+
+Create subclass `ProductionConfig` from Config,
+...
+
+Create a dictionary `config`,this dictionary make the usage of databases environment more convenient.
+{
+    'development':DevelopmentConfig,
+    'testing':TestingConfig,
+    'production':ProductionConfig,
+    'default':DevelopmentConfig
+}
+
+3.extension.py: the purpose of this file is to
+Create three objects, bootstrap,db,migrate from Bootstrap,SQLALchemy,Migrate respectively,
+then bind those three objects to the app,
+
+4.views:the purpose of this file is to create blueprint to rendertemplate html file.
