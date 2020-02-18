@@ -33,7 +33,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/wh1904/qfnz/nzflask_bbs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -110,6 +110,7 @@
       <workItem from="1581727099054" duration="6183000" />
       <workItem from="1581840779121" duration="1803000" />
       <workItem from="1581905981925" duration="673000" />
+      <workItem from="1582025035059" duration="35000" />
     </task>
     <servers />
   </component>
